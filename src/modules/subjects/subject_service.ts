@@ -19,3 +19,9 @@ export const updateSubject = async (id: string, updateData: Partial<ISubject>) =
 export const deleteSubject = async (id: string) => {
     return await Subject.deleteOne({ _id: id });
 };
+
+export const getUsersFromSubject = async (id: string) => {
+  
+const subject = await Subject.findById(id).populate('alumni', 'name email');
+return subject ? subject.alumni : []; //si subject existe, solo devuelve el vector de alumni
+};

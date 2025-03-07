@@ -1,4 +1,4 @@
-import { createSubject, getAllSubjects, getSubjectById, updateSubject, deleteSubject } from "./subject_service.js";
+import { createSubject, getAllSubjects, getSubjectById, updateSubject, deleteSubject, getUsersFromSubject } from "./subject_service.js";
 import express, {Request, Response } from 'express';
 
 export const createSubjectHandler = async (req: Request, res: Response) => {
@@ -47,6 +47,19 @@ export const deleteSubjectHandler = async (req: Request, res: Response) => {
         res.json(data);
     } catch(error: any){
         res.status(500).json({message: error.message});
+    }
+};
+
+export const getUsersFromSubjectHandler = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const users = await getUsersFromSubject(id);
+        if (!users) {
+            return res.status(404).json({ message: 'No subjects found' });
+        }
+        res.json(users);
+    } catch (error: any) {
+        res.status(500).json({ message: error.message });
     }
 };
 

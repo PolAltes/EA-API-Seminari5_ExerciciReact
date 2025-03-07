@@ -4,13 +4,13 @@ import { ObjectId } from "mongodb";
 
 const subjectSchema = new mongoose.Schema({
     name :{type: String,required : true},
-    teacher: {type: Number,required : true},
-    alumni:  [{ type: ObjectId, ref: 'Artist' }]
+    teacher: {type: String,required : true},
+    alumni:  [{ type: ObjectId, ref: 'User' }]
 });
 
 export interface ISubject{
     name : string;
-    teacher : number;
+    teacher : string;
     alumni : ObjectId[];
 
 }

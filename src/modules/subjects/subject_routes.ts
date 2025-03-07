@@ -4,7 +4,8 @@ import {
     getAllSubjectsHandler,
     getSubjectByIdHandler,
     updateSubjectHandler,
-    deleteSubjectHandler
+    deleteSubjectHandler,
+    getUsersFromSubjectHandler
 } from '../subjects/subject_controller.js';
 
 const router = express.Router();
@@ -26,7 +27,7 @@ const router = express.Router();
  *               name:
  *                 type: string
  *               teacher:
- *                 type: number
+ *                 type: string
  *               alumni:
  *                 type: array
  *                 items:
@@ -40,29 +41,29 @@ router.post('/subjects', createSubjectHandler);
 /**
  * @openapi
  * /api/subjects:
- *   post:
- *     summary: Crea una nueva asignatura
- *     description: Añade los detalles de una nueva asignatura.
+ *   get:
+ *     summary: Obtiene todas las asignaturas
+ *     description: Retorna una lista de todas las asignaturas.
  *     tags:
  *       - Subjects
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               teacher:
- *                 type: number
- *               alumni:
- *                 type: array
- *                 items:
- *                   type: string
  *     responses:
- *       201:
- *         description: Asignatura creada exitosamente
+ *       200:
+ *         description: Éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                   teacher:
+ *                     type: string
+ *                   alumni:
+ *                     type: array
+ *                     items:
+ *                       type: string
  */
 router.get('/subjects', getAllSubjectsHandler);
 
@@ -92,7 +93,7 @@ router.get('/subjects', getAllSubjectsHandler);
  *                 name:
  *                   type: string
  *                 teacher:
- *                   type: number
+ *                   type: string
  *                 alumni:
  *                   type: array
  *                   items:
@@ -126,7 +127,7 @@ router.get('/subjects/:id', getSubjectByIdHandler);
  *               name:
  *                 type: string
  *               teacher:
- *                 type: number
+ *                 type: string
  *               alumni:
  *                 type: array
  *                 items:
@@ -160,5 +161,38 @@ router.put('/subjects/:id', updateSubjectHandler);
  *         description: Asignatura no encontrada
  */
 router.delete('/subjects/:id', deleteSubjectHandler);
+
+/**
+ * @openapi
+ * /api/subjects/alumni/{id}:
+ *   get:
+ *     summary: Obtiene los usuarios de una asignatura por ID
+ *     description: Retorna una lista de usuarios de una asignatura específica.
+ *     tags:
+ *       - Subjects
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   userId:
+ *                     type: string
+ *                   userName:
+ *                     type: string
+ *       404:
+ *         description: Asignatura no encontrada
+ */
+router.get('/subjects/alumni/:id', getUsersFromSubjectHandler);
 
 export default router;

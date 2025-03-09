@@ -1,5 +1,18 @@
 # Prova API
 
+# 📌 Fonts de l'Exercici
+
+## 📂 Repositori
+🔗 [Repositori proporcionat per fer l'exercici](https://github.com/JoanPerezPerez/APIseminari_EA)
+
+## 🎥 Videos Recomanats Per Aprendre Com Funciona Express
+- [🔹 Introducció a Express.js](https://www.youtube.com/watch?v=-MTSQjw5DrM&t=2s)
+- [🔹 Desenvolupament d'una API REST amb Express](https://www.youtube.com/watch?v=T1QFGwOnQxQ&t=1s)
+
+## 🤖 Assistència
+💡 **ChatGPT** per aclarir dubtes i obtenir explicacions addicionals.
+
+
 ## Descripció
 Una API bàsica desenvolupada en Node.js amb TypeScript, utilitzant Express i Mongoose per a la gestió de dades en MongoDB. A més, s'inclou documentació amb Swagger.
 

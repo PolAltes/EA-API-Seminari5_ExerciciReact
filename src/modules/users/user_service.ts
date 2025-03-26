@@ -24,3 +24,14 @@ export const updateUser = async (id: string, updateData: Partial<IUser>) => {
 export const deleteUser = async (id: string) => {
     return await User.deleteOne({ _id: id });
 };
+export const logIn = async (email: string, password: string) => {
+    const user = await User.findOne({ email });
+    if (!user) {
+        throw new Error('Usuario no encontrado');
+    }
+    if (user.password !== password) {
+        throw new Error('Contraseña incorrecta');
+    }
+
+    return user; // Devuelve el usuario si las credenciales son correctas
+};

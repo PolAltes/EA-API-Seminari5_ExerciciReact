@@ -55,6 +55,8 @@ router.get('/main', saveMethodHandler);
  *                 type: integer
  *               email:
  *                 type: string
+ *               updated:
+ *                 type: integer
  *     responses:
  *       201:
  *         description: Usuario creado exitosamente
@@ -123,14 +125,14 @@ router.get('/users/:id', getUserByIdHandler);
 
 /**
  * @openapi
- * /api/users/{id}:
+ * /api/users/{name}:
  *   put:
- *     summary: Actualiza un usuario por ID
+ *     summary: Actualiza un usuario por nombre de usuari
  *     description: Modifica los detalles de un usuario específico.
  *     tags:
  *       - Users
  *     parameters:
- *       - name: id
+ *       - name: name
  *         in: path
  *         required: true
  *         schema:
@@ -154,7 +156,7 @@ router.get('/users/:id', getUserByIdHandler);
  *       404:
  *         description: Usuario no encontrado
  */
-router.put('/users/:id', updateUserHandler);
+router.put('/users/:name', updateUserHandler);
 
 /**
  * @openapi

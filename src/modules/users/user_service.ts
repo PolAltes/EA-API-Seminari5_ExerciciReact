@@ -17,8 +17,8 @@ export const getUserById = async (id: string) => {
     return await User.findById(id);
 };
 
-export const updateUser = async (id: string, updateData: Partial<IUser>) => {
-    return await User.updateOne({ _id: id }, { $set: updateData });
+export const updateUser = async (username: string, updateData: Partial<IUser>) => {
+    return await User.updateOne({ name: username}, { $set: updateData });
 };
 
 export const deleteUser = async (id: string) => {
@@ -48,7 +48,8 @@ export const ensureDefaultUser = async () => {
                 name: 'React',
                 email: 'react@gmail.com',
                 password: '1234', 
-                age: 30
+                age: 30,
+                updated: 0
             });
             createdDefaultUser = true;
         } else {
@@ -63,7 +64,8 @@ export const ensureDefaultUser = async () => {
                     name: 'React',
                     email: 'react@gmail.com',
                     password: '1234', 
-                    age: 30
+                    age: 30,
+                    updated: 0
                 });
             }
         }

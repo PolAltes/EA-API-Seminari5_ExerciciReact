@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema({
         required : true,
         unique: true
     },
+    updated: {
+        type: Number,
+        required : true,
+        default: 0,
+    },
     phone: {
         type: Number,
         required : false
@@ -30,6 +35,7 @@ export interface IUser{
     password?: string;
     age?: number;
     email: string;
+    updated: number;
     phone?: number;
 
 }
